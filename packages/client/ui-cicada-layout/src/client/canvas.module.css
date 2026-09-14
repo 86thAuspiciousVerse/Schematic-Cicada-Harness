@@ -1,0 +1,101 @@
+/* Canvas pane (M1c): toolbar + SVG surface + lib panel + lock overlay + menu. */
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  background: #fafaf7;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--dsw-border, rgba(128, 128, 128, 0.35));
+  flex-wrap: wrap;
+}
+
+.toolbar button,
+.libPanel button,
+.contextMenu button {
+  font: inherit;
+  font-size: 12px;
+  padding: 3px 10px;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.toolbar button[data-active] {
+  background: #0969da;
+  color: #fff;
+}
+
+.status {
+  margin-left: auto;
+  font-size: 11px;
+  color: #57606a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40%;
+}
+
+.libPanel {
+  display: flex;
+  gap: 6px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--dsw-border, rgba(128, 128, 128, 0.35));
+}
+
+.libPanel select {
+  font: inherit;
+  font-size: 12px;
+  padding: 3px 6px;
+}
+
+.canvasBox {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.lockOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(250, 250, 247, 0.72);
+  color: #57606a;
+  font-size: 14px;
+  pointer-events: auto;
+}
+
+.contextMenu {
+  position: fixed;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contextMenu button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

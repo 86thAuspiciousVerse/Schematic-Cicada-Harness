@@ -1,0 +1,69 @@
+/* Workspace selector chip + menu (compact, DSH dark-compatible). */
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--dsw-text-2, #a8b3c0);
+  font-size: 12px;
+  max-width: 220px;
+  cursor: pointer;
+}
+.chip:hover {
+  background: var(--dsw-fill-2, rgba(255, 255, 255, 0.06));
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dsw-accent, #5a9cff);
+  flex: none;
+}
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.menu {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  min-width: 180px;
+  max-height: 240px;
+  overflow: auto;
+  border: 1px solid var(--dsw-border-1, rgba(255, 255, 255, 0.12));
+  border-radius: 8px;
+  background: var(--dsw-surface-2, #1e242c);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  padding: 4px;
+  z-index: 30;
+}
+.item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--dsw-text-1, #e6ebf2);
+  font-size: 12px;
+  cursor: pointer;
+}
+.item:hover {
+  background: var(--dsw-fill-2, rgba(255, 255, 255, 0.08));
+}
+.empty {
+  display: block;
+  padding: 5px 8px;
+  color: var(--dsw-text-3, #6c7887);
+  font-size: 12px;
+}

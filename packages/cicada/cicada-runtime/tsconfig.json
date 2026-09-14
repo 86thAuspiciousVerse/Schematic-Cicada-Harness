@@ -1,0 +1,37 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib/types"
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../../../packages/core/agent"
+    },
+    {
+      "path": "../../../packages/core/session"
+    },
+    {
+      "path": "../../../packages/fs/fs"
+    },
+    {
+      "path": "../../../packages/util/atomic-write"
+    },
+    {
+      "path": "../../../vendor/cordis"
+    },
+    {
+      "path": "../cicada-format"
+    },
+    {
+      "path": "../cicada-deriver"
+    },
+    {
+      "path": "../cicada-symbols"
+    },
+    {
+      "path": "../../core/tools"
+    }
+  ]
+}

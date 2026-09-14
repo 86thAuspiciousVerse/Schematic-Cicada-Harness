@@ -1,0 +1,25 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib/types"
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../../../vendor/cordis"
+    },
+    {
+      "path": "../cicada-launcher"
+    },
+    {
+      "path": "../cicada-runtime"
+    },
+    {
+      "path": "../cicada-mineru"
+    },
+    {
+      "path": "../../core/tools"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@deepseek-ai/dsh-cicada-app",
+  "description": "The Schematic-Cicada product bundle: the patch layer over dsh-web-app that pins the desktop surface (127.0.0.1:3123) and mounts the cicada domain plugins",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "cordis.patch.yml"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-cicada-format": "workspace:^",
+    "@deepseek-ai/dsh-cicada-deriver": "workspace:^",
+    "@deepseek-ai/dsh-cicada-symbols": "workspace:^",
+    "@deepseek-ai/dsh-cicada-runtime": "workspace:^",
+    "@deepseek-ai/dsh-cicada-knowledge": "workspace:^",
+    "@deepseek-ai/dsh-cicada-mineru": "workspace:^",
+    "@deepseek-ai/dsh-cicada-erc": "workspace:^",
+    "@deepseek-ai/dsh-cicada-launcher": "workspace:^",
+    "@deepseek-ai/dsh-subagent-spawn-in-process": "workspace:^",
+    "@deepseek-ai/dsh-client-ui-cicada-layout": "workspace:^",
+    "@deepseek-ai/dsh-client-ui-cicada-pipeline": "workspace:^",
+    "@deepseek-ai/dsh-client-ui-cicada-canvas": "workspace:^",
+    "@deepseek-ai/dsh-cicada-editor-bridge": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-cicada-format": "workspace:^",
+    "@deepseek-ai/dsh-cicada-deriver": "workspace:^",
+    "@deepseek-ai/dsh-cicada-symbols": "workspace:^",
+    "@deepseek-ai/dsh-cicada-runtime": "workspace:^",
+    "@deepseek-ai/dsh-cicada-knowledge": "workspace:^",
+    "@deepseek-ai/dsh-cicada-mineru": "workspace:^",
+    "@deepseek-ai/dsh-cicada-erc": "workspace:^",
+    "@deepseek-ai/dsh-cicada-launcher": "workspace:^",
+    "@deepseek-ai/dsh-subagent-spawn-in-process": "workspace:^",
+    "@deepseek-ai/dsh-client-ui-cicada-layout": "workspace:^",
+    "@deepseek-ai/dsh-client-ui-cicada-pipeline": "workspace:^",
+    "@deepseek-ai/dsh-client-ui-cicada-canvas": "workspace:^",
+    "@deepseek-ai/dsh-cicada-editor-bridge": "workspace:^"
+  }
+}

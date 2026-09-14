@@ -1,0 +1,127 @@
+.frame {
+  display: grid;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sidebarCol {
+  overflow: hidden auto;
+  min-width: 0;
+}
+
+.centerCol {
+  min-width: 0;
+  overflow: hidden auto;
+}
+
+.pipelineCol {
+  min-width: 0;
+  overflow: hidden auto;
+  border-left: 1px solid var(--dsw-border, rgba(128, 128, 128, 0.35));
+}
+
+.detailsCol {
+  min-width: 0;
+  overflow: hidden auto;
+  border-left: 1px solid var(--dsw-border, rgba(128, 128, 128, 0.35));
+}
+
+.canvasLayer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.overlayLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.titleRow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 4px 12px;
+  font-size: 12px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* K6 chat 单列模式：全宽对话子页（wx 壳右栏 50:50 嵌入） */
+.chatOnly {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--dsw-surface-1, #14181f);
+}
+
+/* M1c workspace 三列：工作区侧栏 | 画布 | 对话（同窗口底线 + 工作区入口保留） */
+.workspaceFrame {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.workspaceSidebar {
+  flex: 0 0 200px;
+  min-width: 0;
+  overflow: hidden auto;
+  border-right: 1px solid var(--dsw-border, rgba(128, 128, 128, 0.35));
+}
+
+.workspaceSidebarHandle {
+  flex: 0 0 6px;
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+  background: transparent;
+  z-index: 5;
+}
+
+.workspaceSidebarHandle:hover {
+  background: rgba(9, 105, 218, 0.25);
+}
+
+.workspaceSidebarHandle:active,
+.workspaceSidebarHandle[data-dragging] {
+  background: rgba(9, 105, 218, 0.45);
+}
+
+.workspaceCanvas {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.workspaceHandle {
+  flex: 0 0 8px;
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+  border-left: 1px solid var(--dsw-border, rgba(128, 128, 128, 0.35));
+  border-right: 1px solid transparent;
+  background: transparent;
+  z-index: 5;
+}
+
+.workspaceHandle:hover {
+  background: rgba(9, 105, 218, 0.25);
+}
+
+.workspaceHandle:active,
+.workspaceHandle[data-dragging] {
+  background: rgba(9, 105, 218, 0.45);
+}
+
+.workspaceConversation {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden auto;
+}

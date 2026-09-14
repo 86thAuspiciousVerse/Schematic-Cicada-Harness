@@ -1,0 +1,33 @@
+{
+  "name": "@deepseek-ai/dsh-cicada-launcher",
+  "description": "Schematic-Cicada launcher pure-function library: DSH_HOME resolution (CICADA_HOME override), single-instance lock/ping helpers, dsh spawn + stdout line protocol parsing, and first-run profile initialization",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "bin": {
+    "cicada": "./bin/cicada.ts"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/types/**/*.d.ts",
+    "bin/cicada.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "workspace:^",
+    "@deepseek-ai/dsh-host-webserver": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "workspace:^",
+    "@deepseek-ai/dsh-host-webserver": "workspace:^"
+  }
+}

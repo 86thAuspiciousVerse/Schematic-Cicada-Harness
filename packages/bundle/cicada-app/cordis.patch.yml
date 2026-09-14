@@ -1,0 +1,106 @@
+# The dsh-cicada-app bundle patch: the Schematic-Cicada domain layer over
+# dsh-web-app. Applied after web-app's insert; rows here override prior layers
+# by id.
+#
+# A patch replaces the targeted row's whole `config`, so each row restates
+# every key it owns. Rows are `disabled: true` rather than deleted — a deleted
+# row silently reappears if a lower layer gets reordered.
+
+# ── product surface values ─────────────────────────────────────────────────
+# Webserver bind for the desktop shell: launcher passes `--port`; 3123 is the
+# product default. Every key the web layer set is restated.
+- id: webserver
+  config:
+    host: !!js ctx.webStartup.host ?? '127.0.0.1'
+    port: !!js ctx.webStartup.port ?? 3123
+    compression: gzip
+    compressionLevel: 1
+    compressionThresholdBytes: 1024
+
+# ── cicada domain rows ─────────────────────────────────────────────────────
+# Pure-service plugins (P1 + P3). Consumed by cicada-runtime (P3) and later
+# layers.
+- insert:
+    - id: cicada-format
+      name: '@deepseek-ai/dsh-cicada-format'
+
+    - id: cicada-deriver
+      name: '@deepseek-ai/dsh-cicada-deriver'
+
+    - id: cicada-symbols
+      name: '@deepseek-ai/dsh-cicada-symbols'
+
+    - id: cicada-runtime
+      name: '@deepseek-ai/dsh-cicada-runtime'
+
+    - id: cicada-knowledge
+      name: '@deepseek-ai/dsh-cicada-knowledge'
+
+    - id: cicada-mineru
+      name: '@deepseek-ai/dsh-cicada-mineru'
+
+    - id: cicada-erc
+      name: '@deepseek-ai/dsh-cicada-erc'
+
+    # Single-instance liveness endpoint (P5): registers /_cicada/ping on the
+    # webserver (exact route, no token) so a second launch can probe the
+    # running instance (9-impl §1.9 / E24).
+    - id: cicada-launcher
+      name: '@deepseek-ai/dsh-cicada-launcher'
+
+    # Editor control plane (P6, G6): /cicada/editor routes + WS downlink +
+    # one-shot bearer token over stdout (9-impl §1.8). No config here: the
+    # trust fence accepts loopback by default (product binds 127.0.0.1, K26),
+    # and `!!js ctx.webStartup.*` is NOT usable inside insert-block rows (the
+    # interpolate ctx is the row fiber, which has no webStartup — P6 实测).
+    - id: cicada-editor-bridge
+      name: '@deepseek-ai/dsh-cicada-editor-bridge'
+
+    # Tavily MCP is NOT mounted here: an `insert:` row cannot carry `!!js`, and the
+    # endpoint URL embeds a credential. The launcher generates a separate
+    # `--patch` file (docs/04 §5.3) when TAVILY_API_KEY is present and appends it
+    # to the host argv, so the key never reaches a tracked file. See
+    # cicada-launcher/src/tavily.ts.
+
+    # Producer provider instance (P3): a SECOND spawn-in-process row under the
+    # provider name `cicada-producer`; children spawned through it are stamped
+    # `subagent/descriptor.provider = cicada-producer` and get the eight write
+    # tools (roles.ts). The default `spawn` provider row stays untouched.
+    - id: subagent-producer
+      name: '@deepseek-ai/dsh-subagent-spawn-in-process'
+      config:
+        providerName: cicada-producer
+
+    # Knowledge / datasheet stamps (2026-09-13): the same spawn-in-process
+    # provider under two more names, so a child's descriptor says WHICH role it
+    # is. roles.ts uses the stamp to keep the knowledge agent out of the
+    # workspace datasheet copies (its facts must come from research, not from
+    # reading the document the datasheet lane owns).
+    - id: subagent-knowledge
+      name: '@deepseek-ai/dsh-subagent-spawn-in-process'
+      config:
+        providerName: cicada-knowledge
+
+    - id: subagent-datasheet
+      name: '@deepseek-ai/dsh-subagent-spawn-in-process'
+      config:
+        providerName: cicada-datasheet
+
+# ── P4 client rows: disable the native root frame, mount the cicada frame ────
+# ui-layout is overridden by id (web-app inserted it) — disabled, not deleted.
+- id: ui-layout
+  name: '@deepseek-ai/dsh-client-ui-layout'
+  disabled: true
+
+# dsh.client rows: browser plugin roster (dynamic client packages).
+- insert:
+    - id: cicada-layout
+      name: '@deepseek-ai/dsh-client-ui-cicada-layout'
+
+    - id: cicada-pipeline
+      name: '@deepseek-ai/dsh-client-ui-cicada-pipeline'
+
+    - id: cicada-canvas
+      name: '@deepseek-ai/dsh-client-ui-cicada-canvas'
+
+    # ── reserved slots (do not delete; rows keep their ids for later stages) ──

@@ -1,0 +1,77 @@
+(kicad_sch (version 20250114) (generator "cicada") (generator_version "0.1")
+  (uuid 11111111-2222-3333-4444-555555555555)
+  (lib_symbols
+    (symbol "cicada:R" 
+  (pin_numbers 
+    (hide yes)) 
+  (pin_names 
+    (offset 0)) 
+  (property "Reference" "R" 
+    (at 2.032 0 90)) 
+  (property "Value" "R" 
+    (at 0 0 90)) 
+  (symbol "R_0_1" 
+    (rectangle 
+      (start -1.016 -2.54) 
+      (end 1.016 2.54))) 
+  (symbol "R_1_1" 
+    (pin passive line 
+      (at 0 3.81 270) 
+      (length 1.27) 
+      (name "") 
+      (number "1")) 
+    (pin passive line 
+      (at 0 -3.81 90) 
+      (length 1.27) 
+      (name "") 
+      (number "2"))))
+    (symbol "cicada:C" 
+  (pin_numbers 
+    (hide yes)) 
+  (pin_names 
+    (offset 0)) 
+  (property "Reference" "C" 
+    (at 2.032 0 90)) 
+  (property "Value" "C" 
+    (at 0 0 90)) 
+  (symbol "C_0_1" 
+    (rectangle 
+      (start -1.524 -2.54) 
+      (end 1.524 2.54))) 
+  (symbol "C_1_1" 
+    (pin passive line 
+      (at 0 3.81 270) 
+      (length 1.27) 
+      (name "") 
+      (number "1")) 
+    (pin passive line 
+      (at 0 -3.81 90) 
+      (length 1.27) 
+      (name "") 
+      (number "2"))))
+  )
+  (symbol (lib_id "cicada:R") (at 14.40 19.60 0) (unit 1)
+    (uuid bbbbbbbb-1111-0000-0000-000000000001)
+    (property "Reference" "R1" (at 14.40 19.60 0))
+    (property "Value" "10k" (at 14.40 19.60 0))
+    (property "Footprint" "" (at 14.40 19.60 0))
+    (property "Datasheet" "~" (at 14.40 19.60 0))
+    (pin "1" (uuid bbbbbbbb-1111-0000-0000-000000000002))
+    (pin "2" (uuid bbbbbbbb-1111-0000-0000-000000000003))
+  )
+  (symbol (lib_id "cicada:C") (at 36.10 20.20 0) (unit 1)
+    (uuid bbbbbbbb-1111-0000-0000-000000000004)
+    (property "Reference" "C1" (at 36.10 20.20 0))
+    (property "Value" "100nF" (at 36.10 20.20 0))
+    (property "Footprint" "" (at 36.10 20.20 0))
+    (property "Datasheet" "~" (at 36.10 20.20 0))
+    (pin "1" (uuid bbbbbbbb-1111-0000-0000-000000000005))
+    (pin "2" (uuid bbbbbbbb-1111-0000-0000-000000000006))
+  )
+  (wire (pts (xy 25.40 30.48) (xy 36.10 24.01)) (uuid aaaaaaaa-1111-0000-0000-000000000001))
+  (label "NET1" (at 25.40 30.48 0) (uuid aaaaaaaa-1111-0000-0000-000000000002))
+  (no_connect (at 25.40 45.72) (uuid cccccccc-1111-0000-0000-000000000001))
+  (sheet_instances 
+  (path "/" 
+    (page "1")))
+)
